@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.entity.Message;
 import com.example.repository.MessageRepository;
@@ -62,6 +63,7 @@ public class MessageService {
      * @param message_id Takes in a {@code Integer} message_id to process the request.
      * @return The amount of rows that were affected by the deletion.
      */
+    @Transactional
     public Integer deleteMessageByID(Integer message_id){
         return messageRepository.deleteByIDReturn(message_id);
     }
@@ -72,6 +74,7 @@ public class MessageService {
      * @param updateMessage Take in a {@code String} that will be set in the message to update the message.
      * @return A {@code Integer} of the number of rows that were affected.
      */
+    @Transactional
     public Integer updateMessageByID(Integer message_id, String updateMessage){
         if(    updateMessage.equals("") 
             || updateMessage.length() > 255
