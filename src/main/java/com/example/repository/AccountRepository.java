@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.example.entity.Account;
 
+@Repository
 public interface AccountRepository extends CrudRepository<Account, Integer> {
     Optional<Account> findByUsername(String username);
 }
